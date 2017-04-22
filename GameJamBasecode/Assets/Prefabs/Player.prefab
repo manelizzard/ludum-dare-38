@@ -119,6 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   rotationSpeed: 230
+  decreasingVelocity: 0.99
 --- !u!212 &212083090389357134
 SpriteRenderer:
   m_ObjectHideFlags: 1

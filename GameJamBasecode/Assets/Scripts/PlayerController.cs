@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour {
 	private float speed = 3.0f;
 	[SerializeField]
 	private float rotationSpeed = 230.0f;
+	[SerializeField]
+	private float decreasingVelocity = 0.1f;
 
 	private Rigidbody2D rigidBody;
 	private GameController gameController;
@@ -49,6 +51,10 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetKey (KeyCode.RightArrow)) {
 			// - Rotate right
 			this.transform.Rotate(new Vector3(0.0f, 0.0f, -rotationSpeed*Time.deltaTime));
+		}
+
+		if (this.rigidBody.velocity.magnitude > 0f) {
+			this.rigidBody.velocity *= decreasingVelocity;
 		}
 	}
 
