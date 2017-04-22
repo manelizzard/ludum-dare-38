@@ -5,14 +5,16 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
 	[SerializeField]
-	private float speed = 5.0f;
+	private float speed = 3.0f;
 	[SerializeField]
-	private float rotationSpeed = 50.0f;
+	private float rotationSpeed = 230.0f;
 
 	private Rigidbody2D rigidBody;
+	private GameController gameController;
 
 	void Start() {
 		this.rigidBody = GetComponent<Rigidbody2D> ();
+		this.gameController = FindObjectOfType<GameController> ();
 	}
 
 	// Update is called once per frame
@@ -34,10 +36,8 @@ public class PlayerController : MonoBehaviour {
 				// - right
 			}
 				
-			Vector3 dir = directionVector + new Vector3 (0, Mathf.Sin(yRotation * Mathf.Deg2Rad), 0.0f);
-			Debug.Log ("ROTATION: " + this.transform.localEulerAngles);
 			// - Apply front force
-			Debug.Log ("Applying force to: " + dir);
+			Vector3 dir = directionVector + new Vector3 (0, Mathf.Sin(yRotation * Mathf.Deg2Rad), 0.0f);
 			this.rigidBody.AddForce(dir * speed);
 		}
 
@@ -50,5 +50,18 @@ public class PlayerController : MonoBehaviour {
 			// - Rotate right
 			this.transform.Rotate(new Vector3(0.0f, 0.0f, -rotationSpeed*Time.deltaTime));
 		}
+	}
+
+	void OnTriggerEnter2D(Collider2D col) {
+		Tile tile = col.GetComponent<Tile>();
+
+		if (tile != null && tile.GetType() == Tile.Type.BROKEN_ICE) {
+			Invoke ("Fall", 0.5f);
+		}
+	}
+
+	private void Fall() {
+		// - FALL!
+		gameController.Fall();
 	}
 }

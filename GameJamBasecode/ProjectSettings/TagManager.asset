@@ -13,10 +13,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Background
+  - TileMap
+  - Player
+  - Items
   - 
   - 
   - 
@@ -40,4 +40,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 4017954311
+    locked: 0
+  - name: TileMap
+    uniqueID: 844307689
+    locked: 0
+  - name: Player
+    uniqueID: 307529679
+    locked: 0
+  - name: Items
+    uniqueID: 1203493705
     locked: 0
