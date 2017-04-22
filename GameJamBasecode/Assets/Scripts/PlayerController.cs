@@ -59,10 +59,15 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
+		// - Die by tile
 		Tile tile = col.GetComponent<Tile>();
-
 		if (tile != null && tile.GetType() == Tile.Type.BROKEN_ICE) {
 			Invoke ("Fall", 0.2f);
+		}
+
+		// - Die by screen limits
+		if (col.tag == "Wall") {
+			Invoke ("Fall", 0.1f);
 		}
 	}
 
