@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour {
 
 	public Text scoreText;
 	public Text lifetimeText;
+	public Text maxScoreText;
 
 	private Tile currentTileWithItem;
 
@@ -24,6 +25,9 @@ public class GameController : MonoBehaviour {
 		tileMap = FindObjectOfType<TileMap> ();
 		Invoke ("SpawnItem", 5f); 
 		InvokeRepeating ("TickCountdown", 1f, 1f);
+
+		maxScoreText.text = PlayerPrefs.GetInt ("maxScore").ToString();
+		scoreText.text = "0";
 	}
 
 	public void Fall() {
@@ -47,8 +51,7 @@ public class GameController : MonoBehaviour {
 
 	public void ItemCollected(Item item) {
 		score += (int) (Random.Range(0.7f, 1.0f) * item.GetValue ());
-		CancelInvoke ("SpawnItem");
-		Invoke ("SpawnItem", 2f);
+		SpawnItem ();
 
 		if (currentTileWithItem != null) {
 			tileMap.RecoverTile (currentTileWithItem);
@@ -56,6 +59,9 @@ public class GameController : MonoBehaviour {
 		}
 
 		scoreText.text = score.ToString();
+		if(score > PlayerPrefs.GetInt ("maxScore")) {
+			PlayerPrefs.SetInt("maxScore", score);
+		}
 	}
 
 	private void TickCountdown() {

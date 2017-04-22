@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour {
 		Tile tile = col.GetComponent<Tile>();
 
 		if (tile != null && tile.GetType() == Tile.Type.BROKEN_ICE) {
-			Invoke ("Fall", 0.5f);
+			Invoke ("Fall", 0.2f);
 		}
 	}
 
