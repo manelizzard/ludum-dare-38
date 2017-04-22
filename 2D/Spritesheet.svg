@@ -25,16 +25,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.175"
-     inkscape:cx="843.24715"
-     inkscape:cy="792.652"
+     inkscape:zoom="1.0800781"
+     inkscape:cx="159.86254"
+     inkscape:cy="1367.8415"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      units="px"
-     inkscape:window-width="1235"
+     inkscape:window-width="1238"
      inkscape:window-height="755"
-     inkscape:window-x="45"
+     inkscape:window-x="42"
      inkscape:window-y="1"
      inkscape:window-maximized="1" />
   <metadata
@@ -45,7 +45,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -53,5 +53,36 @@
      inkscape:label="Capa 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,995.63784)" />
+     transform="translate(0,995.63784)">
+    <rect
+       style="opacity:1;fill:#646464;fill-opacity:1;stroke:none"
+       id="rect4133"
+       width="64"
+       height="64"
+       x="62.857143"
+       y="-428.78073"
+       inkscape:export-filename="/Users/manel/workspace/ludum-dare-38/GameJamBasecode/Assets/Sprites/tile_ice.png"
+       inkscape:export-xdpi="127"
+       inkscape:export-ydpi="127" />
+    <rect
+       y="-429.7066"
+       x="147.11031"
+       height="64"
+       width="64"
+       id="rect4135"
+       style="opacity:1;fill:#64ff64;fill-opacity:1;stroke:none"
+       inkscape:export-filename="/Users/manel/workspace/ludum-dare-38/GameJamBasecode/Assets/Sprites/tile_half_broken_ice.png"
+       inkscape:export-xdpi="127"
+       inkscape:export-ydpi="127" />
+    <rect
+       style="opacity:1;fill:#640064;fill-opacity:1;stroke:none"
+       id="rect4137"
+       width="64"
+       height="64"
+       x="224.88246"
+       y="-429.7066"
+       inkscape:export-filename="/Users/manel/workspace/ludum-dare-38/GameJamBasecode/Assets/Sprites/tile_broken_ice.png"
+       inkscape:export-xdpi="127"
+       inkscape:export-ydpi="127" />
+  </g>
 </svg>
