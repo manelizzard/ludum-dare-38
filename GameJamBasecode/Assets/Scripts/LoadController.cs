@@ -24,4 +24,8 @@ public class LoadController : MonoBehaviour {
 	public void Fire() {
 		async.allowSceneActivation = true;
 	}
+
+	public void LoadCredits() {
+		SceneManager.LoadScene ("Credits");
+	}
 }

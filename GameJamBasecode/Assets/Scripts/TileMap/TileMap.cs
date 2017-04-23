@@ -5,11 +5,9 @@ using UnityEngine;
 public class TileMap : MonoBehaviour {
 
 	[SerializeField]
-	private int sizeX = 9;
+	private int sizeX = 18;
 	[SerializeField]
-	private int sizeY = 6;
-	[SerializeField]
-	private int tileSize = 1;
+	private int sizeY = 14;
 
 	private Tile[,] mapData;
 
@@ -19,17 +17,19 @@ public class TileMap : MonoBehaviour {
 	private Tile tilePrefab;
 
 	private ArrayList spawnableTiles = new ArrayList ();
+	private SoundController soundController;
 
 	[SerializeField]
 	private int oneHoleEachSeconds = 10;
 
 	// Use this for initialization
 	void Start () {
+		soundController = FindObjectOfType<SoundController> ();
 		mapData = new Tile[sizeX, sizeY];
 
 		for (int x = 0; x < sizeX; x++) {
 			for (int y = 0; y < sizeY; y++) {
-				Tile tile = Instantiate (tilePrefab, new Vector2 (x-4, y-3), Quaternion.identity) as Tile;
+				Tile tile = Instantiate (tilePrefab, new Vector2 (x-9, y-6), Quaternion.identity) as Tile;
 				tile.x = x;
 				tile.y = y;
 				mapData [x, y] = tile;
@@ -37,11 +37,10 @@ public class TileMap : MonoBehaviour {
 				tile.transform.parent = this.transform;
 			}
 		}
-
-		InvokeRepeating ("MakeHole", oneHoleEachSeconds, oneHoleEachSeconds);
 	}
 
 	public void BreakTile(Tile tile) {
+		soundController.PlayBreak ();
 		spawnableTiles.Remove (tile);
 		tile.setType(Tile.Type.BROKEN_ICE, sprites[2]);
 	}
@@ -58,5 +57,13 @@ public class TileMap : MonoBehaviour {
 	private void MakeHole() {
 		Tile tile = GetSpawnableTile ();
 		BreakTile (tile);
+	}
+
+	public void StopMakingHoles() {
+		CancelInvoke ("MakeHole");
+	}
+
+	public void StartMakingHoles() {
+		InvokeRepeating ("MakeHole", oneHoleEachSeconds, oneHoleEachSeconds);
 	}
 }

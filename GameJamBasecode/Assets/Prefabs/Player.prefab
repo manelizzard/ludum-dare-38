@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4420432715887444}
   - component: {fileID: 212083090389357134}
-  - component: {fileID: 114431923756205766}
   - component: {fileID: 50225234397790598}
   - component: {fileID: 60114258484585280}
+  - component: {fileID: 114233070370417516}
   m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
@@ -106,7 +106,7 @@ PolygonCollider2D:
       - {x: 0.445, y: -0.705}
       - {x: 0.695, y: -0.445}
       - {x: 0.78499997, y: -0.255}
---- !u!114 &114431923756205766
+--- !u!114 &114233070370417516
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

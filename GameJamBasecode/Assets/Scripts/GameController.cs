@@ -20,18 +20,31 @@ public class GameController : MonoBehaviour {
 	public Text maxScoreText;
 
 	private Tile currentTileWithItem;
+	private SoundController soundController;
+	private GameOver gameOver;
+	public PlayerController playerPrefab;
+	private PlayerController spawnedPlayer;
+	private Item currentSpawnedItem;
 
 	void Start() {
+		gameOver = FindObjectOfType<GameOver> ();
+		soundController = FindObjectOfType<SoundController> ();
 		tileMap = FindObjectOfType<TileMap> ();
+		StartGame ();
+	}
+
+	public void StartGame() {
+		SpawnPlayer ();
 		Invoke ("SpawnItem", 5f); 
 		InvokeRepeating ("TickCountdown", 1f, 1f);
-
 		maxScoreText.text = PlayerPrefs.GetInt ("maxScore").ToString();
 		scoreText.text = "0";
+		tileMap.StartMakingHoles();
 	}
 
 	public void Fall() {
 		LoseGame();
+		soundController.PlayFall ();
 	}
 
 	public void Die() {
@@ -39,17 +52,26 @@ public class GameController : MonoBehaviour {
 	}
 
 	void LoseGame() {
-		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
+		if (currentSpawnedItem != null) {
+			Destroy (currentSpawnedItem.gameObject);
+		}
+
+		CancelInvoke ("SpawnItem");
+		CancelInvoke ("TickCountdown");
+		gameOver.Arise (score);
+		tileMap.StopMakingHoles();
+		Destroy (this.spawnedPlayer.gameObject);
 	}
 
 	void SpawnItem() {
 		currentTileWithItem = tileMap.GetSpawnableTile ();
 		currentTileWithItem.setType (Tile.Type.UNBREAKABLE);
-		Item item = Instantiate (itemPrefab, currentTileWithItem.transform.position, Quaternion.identity);
-		item.transform.parent = this.transform;
+		currentSpawnedItem = Instantiate (itemPrefab, currentTileWithItem.transform.position, Quaternion.identity);
+		currentSpawnedItem.transform.parent = this.transform;
 	}
 
 	public void ItemCollected(Item item) {
+		soundController.PlayGatherItem ();
 		score += (int) (Random.Range(0.7f, 1.0f) * item.GetValue ());
 		SpawnItem ();
 
@@ -78,5 +100,18 @@ public class GameController : MonoBehaviour {
 	public void IncreaseLifetime(int amount) {
 		remainigPlayerLifetime += amount;
 		lifetimeText.text = remainigPlayerLifetime.ToString() + "s";
+	}
+
+	public void Restart() {
+		gameOver.Hide ();
+		StartGame ();
+	}
+
+	private void SpawnPlayer() {
+		spawnedPlayer = (PlayerController) Instantiate(this.playerPrefab, Vector3.zero, Quaternion.identity) as PlayerController;
+	}
+
+	public void QuitGame() {
+		SceneManager.LoadScene ("Main Menu");
 	}
 }
