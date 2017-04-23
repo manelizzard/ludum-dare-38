@@ -14,7 +14,6 @@ public class UISound : MonoBehaviour {
 	}
 
 	private void Click() {
-		Debug.Log ("PLAYING UI");
 		soundController.PlayUI ();
 	}
 }

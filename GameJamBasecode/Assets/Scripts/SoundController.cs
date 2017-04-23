@@ -66,6 +66,6 @@ public class SoundController : MonoBehaviour {
 		
 	private void PlayRandomInArray(AudioClip[] clips) {
 		AudioClip clip = clips [(int) Random.Range (0f, clips.Length - 1f)];
-		AudioSource.PlayClipAtPoint (clip, this.transform.position);
+		GetComponent<AudioSource> ().PlayOneShot (clip);
 	}
 }
