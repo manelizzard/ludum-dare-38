@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour {
 	private Item itemPrefab;
 
 	[SerializeField]
-	private int initialPlayerLifetime = 60;
+	private int initialPlayerLifetime = 40;
 	private int remainigPlayerLifetime;
 
 	private TileMap tileMap;
