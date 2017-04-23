@@ -10,7 +10,8 @@ public class GameController : MonoBehaviour {
 	private Item itemPrefab;
 
 	[SerializeField]
-	private int remainigPlayerLifetime = 60;
+	private int initialPlayerLifetime = 60;
+	private int remainigPlayerLifetime;
 
 	private TileMap tileMap;
 	private int score = 0;
@@ -35,6 +36,7 @@ public class GameController : MonoBehaviour {
 
 	public void StartGame() {
 		SpawnPlayer ();
+		remainigPlayerLifetime = initialPlayerLifetime;
 		Invoke ("SpawnItem", 5f); 
 		InvokeRepeating ("TickCountdown", 1f, 1f);
 		maxScoreText.text = PlayerPrefs.GetInt ("maxScore").ToString();
@@ -50,6 +52,7 @@ public class GameController : MonoBehaviour {
 
 	public void Die() {
 		LoseGame();
+		soundController.PlayDie ();
 	}
 
 	void LoseGame() {

@@ -14,6 +14,12 @@ public class SoundController : MonoBehaviour {
 	private AudioClip[] gatherItem;
 	[SerializeField]
 	private AudioClip[] clipsItemSpawn;
+	[SerializeField]
+	private AudioClip[] clipsDie;
+	[SerializeField]
+	private AudioClip[] clipsUI;
+	[SerializeField]
+	private AudioClip[] clipsGameOver;
 
 	private static SoundController instance = null;
 
@@ -44,6 +50,18 @@ public class SoundController : MonoBehaviour {
 
 	public void PlayItemSpawned() {
 		PlayRandomInArray (clipsItemSpawn);
+	}
+
+	public void PlayDie() {
+		PlayRandomInArray (clipsDie);
+	}
+
+	public void PlayUI() {
+		PlayRandomInArray (clipsUI);
+	}
+
+	public void PlayGameOver() {
+		PlayRandomInArray (clipsGameOver);
 	}
 		
 	private void PlayRandomInArray(AudioClip[] clips) {

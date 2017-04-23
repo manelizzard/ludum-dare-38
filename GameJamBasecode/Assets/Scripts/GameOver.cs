@@ -7,9 +7,11 @@ public class GameOver : MonoBehaviour {
 
 	public Text scoreText;
 	private Animator animator;
+	private SoundController soundController;
 
 	// Use this for initialization
 	void Start () {
+		soundController = FindObjectOfType<SoundController> ();
 		animator = GetComponent<Animator> ();
 	}
 
@@ -21,6 +23,7 @@ public class GameOver : MonoBehaviour {
 	private void InternalArise() {
 		// - Delayed arising
 		animator.SetBool ("GameOver", true);
+		soundController.PlayGameOver ();
 	}
 
 	public void Hide() {
