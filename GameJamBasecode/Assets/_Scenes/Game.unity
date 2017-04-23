@@ -309,7 +309,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2116527650}
   - {fileID: 1654709511}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -1879,7 +1878,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 55374079}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1654709512
 MonoBehaviour:
@@ -2174,53 +2173,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!1 &2116527648
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 2116527650}
-  - component: {fileID: 2116527649}
-  m_Layer: 0
-  m_Name: SoundController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2116527649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2116527648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0b75036df15140658daf8c34be1937f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clipsFall:
-  - {fileID: 8300000, guid: 2550768b8bda54dd5a3281f6a02fd94d, type: 3}
-  - {fileID: 8300000, guid: cd9adaa97dac8498ca11e6ed4d706237, type: 3}
-  - {fileID: 8300000, guid: 82e9a357991c34a328ae8ab9d103b4ad, type: 3}
-  clipsBreak:
-  - {fileID: 8300000, guid: 64aab040a505b45a489a3ba28a29ce87, type: 3}
-  - {fileID: 8300000, guid: 9c022e9d6e4b04e59a38dfa8b3f342df, type: 3}
-  - {fileID: 8300000, guid: 16da2936a39794e83921631b759815f3, type: 3}
-  gatherItem:
-  - {fileID: 8300000, guid: 04fd3ee06b94e4d769f16413a8c3b9d7, type: 3}
---- !u!4 &2116527650
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2116527648}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 55374079}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

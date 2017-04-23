@@ -66,4 +66,12 @@ public class TileMap : MonoBehaviour {
 	public void StartMakingHoles() {
 		InvokeRepeating ("MakeHole", oneHoleEachSeconds, oneHoleEachSeconds);
 	}
+
+	public void Reset() {
+		for (int x = 0; x < sizeX; x++) {
+			for (int y = 0; y < sizeY; y++) {
+				RecoverTile (mapData [x, y]);
+			}
+		}
+	}
 }

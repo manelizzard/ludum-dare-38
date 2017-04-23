@@ -9,10 +9,21 @@ public class SoundController : MonoBehaviour {
 	[SerializeField]
 	private AudioClip[] clipsBreak;
 	[SerializeField]
+	private AudioClip[] clipsHalfBreak;
+	[SerializeField]
 	private AudioClip[] gatherItem;
+	[SerializeField]
+	private AudioClip[] clipsItemSpawn;
+
+	private static SoundController instance = null;
 
 	void Start() {
-		DontDestroyOnLoad (this.gameObject);
+		if (instance == null) {
+			DontDestroyOnLoad (this.gameObject);
+			instance = this;
+		} else {
+			Destroy (this.gameObject);
+		}
 	}
 
 	public void PlayGatherItem() {
@@ -23,8 +34,16 @@ public class SoundController : MonoBehaviour {
 		PlayRandomInArray (clipsFall);
 	}
 
+	public void PlayHalfBreak() {
+		PlayRandomInArray (clipsHalfBreak);
+	}
+
 	public void PlayBreak() {
 		PlayRandomInArray (clipsBreak);
+	}
+
+	public void PlayItemSpawned() {
+		PlayRandomInArray (clipsItemSpawn);
 	}
 		
 	private void PlayRandomInArray(AudioClip[] clips) {

@@ -40,6 +40,7 @@ public class GameController : MonoBehaviour {
 		maxScoreText.text = PlayerPrefs.GetInt ("maxScore").ToString();
 		scoreText.text = "0";
 		tileMap.StartMakingHoles();
+		tileMap.Reset ();
 	}
 
 	public void Fall() {
@@ -68,12 +69,13 @@ public class GameController : MonoBehaviour {
 		currentTileWithItem.setType (Tile.Type.UNBREAKABLE);
 		currentSpawnedItem = Instantiate (itemPrefab, currentTileWithItem.transform.position, Quaternion.identity);
 		currentSpawnedItem.transform.parent = this.transform;
+		soundController.PlayItemSpawned ();
 	}
 
 	public void ItemCollected(Item item) {
 		soundController.PlayGatherItem ();
 		score += (int) (Random.Range(0.7f, 1.0f) * item.GetValue ());
-		SpawnItem ();
+		Invoke ("SpawnItem", 0.2f);
 
 		if (currentTileWithItem != null) {
 			tileMap.RecoverTile (currentTileWithItem);
