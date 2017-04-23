@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetKey (KeyCode.UpArrow)) {
+		if (Input.GetKey (KeyCode.UpArrow) || Input.GetAxis("Vertical") > 0.0f) {
 
 			float yRotation = this.transform.eulerAngles.z;
 			Vector3 directionVector = Vector3.right;
@@ -41,14 +41,17 @@ public class PlayerController : MonoBehaviour {
 			// - Apply front force
 			Vector3 dir = directionVector + new Vector3 (0, Mathf.Sin(yRotation * Mathf.Deg2Rad), 0.0f);
 			this.rigidBody.AddForce(dir * speed);
+			Debug.Log ("MOVE FORWARD");
 		}
 
-		if (Input.GetKey (KeyCode.LeftArrow)) {
+		if (Input.GetKey (KeyCode.LeftArrow) || Input.GetAxis("PS4_Right_Analog_Hor") < 0.0f) {
+			Debug.Log ("ROTATE LEFT");
 			// - Rotate left
 			this.transform.Rotate (new Vector3 (0.0f, 0.0f, rotationSpeed * Time.deltaTime));
 		}
 
-		if (Input.GetKey (KeyCode.RightArrow)) {
+		if (Input.GetKey (KeyCode.RightArrow) || Input.GetAxis("PS4_Right_Analog_Hor") > 0.0f) {
+			Debug.Log ("ROTATE RIGHT");
 			// - Rotate right
 			this.transform.Rotate(new Vector3(0.0f, 0.0f, -rotationSpeed*Time.deltaTime));
 		}
