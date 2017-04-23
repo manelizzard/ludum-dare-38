@@ -99,12 +99,12 @@ public class GameController : MonoBehaviour {
 			CancelInvoke ("TickCountdown");
 		}
 			
-		lifetimeText.text = remainigPlayerLifetime.ToString() + "s";
+		lifetimeText.text = remainigPlayerLifetime.ToString();
 	}
 
 	public void IncreaseLifetime(int amount) {
 		remainigPlayerLifetime += amount;
-		lifetimeText.text = remainigPlayerLifetime.ToString() + "s";
+		lifetimeText.text = remainigPlayerLifetime.ToString();
 	}
 
 	public void Restart() {

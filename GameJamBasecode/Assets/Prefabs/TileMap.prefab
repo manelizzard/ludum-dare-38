@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4612128003748724}
   - component: {fileID: 114746898351030480}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TileMap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,12 +51,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0c7dad422f944ac6a87211d0109e2db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeX: 9
-  sizeY: 7
-  tileSize: 1
+  sizeX: 17
+  sizeY: 11
+  leftOffset: 3
   sprites:
   - {fileID: 21300000, guid: 65af889fda41442ab98fefd49dfe2fc4, type: 3}
   - {fileID: 21300002, guid: 65af889fda41442ab98fefd49dfe2fc4, type: 3}
-  - {fileID: 21300004, guid: 65af889fda41442ab98fefd49dfe2fc4, type: 3}
+  - {fileID: 21300000, guid: 255601ab1d119428a8e7abc224ebb67d, type: 3}
   tilePrefab: {fileID: 114427414003622520, guid: b38babef034f142f9a919f8cb1c9c4d6,
     type: 2}
+  oneHoleEachSeconds: 10

@@ -13,8 +13,10 @@ public class PlayerController : MonoBehaviour {
 
 	private Rigidbody2D rigidBody;
 	private GameController gameController;
+	private Animator animator;
 
 	void Start() {
+		this.animator = GetComponent<Animator> ();
 		this.rigidBody = GetComponent<Rigidbody2D> ();
 		this.gameController = FindObjectOfType<GameController> ();
 	}
@@ -22,25 +24,28 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetKey (KeyCode.UpArrow) || Input.GetAxis("Vertical") > 0.0f) {
+		if (Input.GetKey (KeyCode.UpArrow) || Input.GetAxis ("Vertical") > 0.0f) {
 
 			float yRotation = this.transform.eulerAngles.z;
 			Vector3 directionVector = Vector3.right;
 			if (yRotation > 0 && yRotation <= 90) {
 				// - right
-			} else if(yRotation > 90 && yRotation <= 180) {
+			} else if (yRotation > 90 && yRotation <= 180) {
 				// - left
 				directionVector = Vector3.left;
-			} else if(yRotation > 180 && yRotation <= 270) {
+			} else if (yRotation > 180 && yRotation <= 270) {
 				// - left
 				directionVector = Vector3.left;
-			} else if(yRotation > 270 && yRotation <= 360) {
+			} else if (yRotation > 270 && yRotation <= 360) {
 				// - right
 			}
 				
 			// - Apply front force
-			Vector3 dir = directionVector + new Vector3 (0, Mathf.Sin(yRotation * Mathf.Deg2Rad), 0.0f);
-			this.rigidBody.AddForce(dir * speed);
+			Vector3 dir = directionVector + new Vector3 (0, Mathf.Sin (yRotation * Mathf.Deg2Rad), 0.0f);
+			this.rigidBody.AddForce (dir * speed);
+			animator.SetBool ("Moving", true);
+		} else {
+			animator.SetBool ("Moving", false);
 		}
 
 		if (Input.GetKey (KeyCode.LeftArrow) || Input.GetAxis("PS4_Right_Analog_Hor") < 0.0f) {

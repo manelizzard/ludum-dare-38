@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: a9e4c7225ac5d41c783a056c7aa0be75
+timeCreated: 1492964056
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Night_Ride
+  fontNames:
+  - Night_Ride
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -5,14 +5,14 @@ using UnityEngine;
 public class TileMap : MonoBehaviour {
 
 	[SerializeField]
-	private int sizeX = 18;
+	private int sizeX = 17;
 	[SerializeField]
-	private int sizeY = 14;
+	private int sizeY = 11;
+	[SerializeField]
+	private int leftOffset = 3;
 
 	private Tile[,] mapData;
 
-	[SerializeField]
-	private Sprite[] sprites;
 	[SerializeField]
 	private Tile tilePrefab;
 
@@ -29,7 +29,7 @@ public class TileMap : MonoBehaviour {
 
 		for (int x = 0; x < sizeX; x++) {
 			for (int y = 0; y < sizeY; y++) {
-				Tile tile = Instantiate (tilePrefab, new Vector2 (x-9, y-6), Quaternion.identity) as Tile;
+				Tile tile = Instantiate (tilePrefab, new Vector2 (x-8-leftOffset, y-5), Quaternion.identity) as Tile;
 				tile.x = x;
 				tile.y = y;
 				mapData [x, y] = tile;
@@ -42,7 +42,7 @@ public class TileMap : MonoBehaviour {
 	public void BreakTile(Tile tile) {
 		soundController.PlayBreak ();
 		spawnableTiles.Remove (tile);
-		tile.setType(Tile.Type.BROKEN_ICE, sprites[2]);
+		tile.setType(Tile.Type.BROKEN_ICE);
 	}
 
 	public Tile GetSpawnableTile() {
@@ -51,7 +51,7 @@ public class TileMap : MonoBehaviour {
 	}
 
 	public void RecoverTile(Tile tile) {
-		tile.setType (Tile.Type.ICE, sprites [0]);
+		tile.setType (Tile.Type.ICE);
 	}
 
 	private void MakeHole() {

@@ -14,24 +14,26 @@ public class Tile : MonoBehaviour {
 
 	void Start() {
 		spriteRenderer = GetComponent(typeof(SpriteRenderer)) as SpriteRenderer;
+		spriteRenderer.enabled = false;
 	}
 
 	public void setType(Type type) {
-		setType (type, null);
-	}
-
-	public void setType(Type type, Sprite sprite) {
 		if (this.type != type) {
 			this.type = type;
 
-			if (sprite != null) {
-				this.spriteRenderer.sprite = sprite;
-			}
-
 			// - Delay breaking ice 1 second
 			if (this.type == Type.BROKEN_ICE) {
+				GetComponent<Animator> ().SetBool ("Broken", true);
 				GetComponent<BoxCollider2D> ().enabled = false;
 				Invoke ("EnableCollider", .2f);
+			} else {
+				GetComponent<Animator> ().SetBool ("Broken", false);
+			}
+
+			if (this.type == Type.ICE || this.type == Type.UNBREAKABLE) {
+				spriteRenderer.enabled = false;
+			} else {
+				spriteRenderer.enabled = true;
 			}
 		}
 	}
